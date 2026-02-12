@@ -4,6 +4,7 @@ import { useUltraShortNowcast } from '../model/useUltraShortNowcast';
 import ErrorMessage from '@/shared/ui/ErrorMessage';
 import { WeatherEmoji } from './WeatherEmoji';
 import { formatValue } from '../lib/formatValue';
+import { useFormattedNow } from '../lib/useFormattedNow';
 
 type MainWeatherCardProps = {
   currentDistrict: string;
@@ -28,6 +29,8 @@ export default function MainWeatherCard({
     error: shortTermError,
   } = useShortTermForecast(nx, ny);
 
+  const formattedNow = useFormattedNow();
+
   const isLoading = ultraShortIsLoading || shortTermIsLoading;
   const error = ultraShortError || shortTermError;
 
@@ -43,9 +46,7 @@ export default function MainWeatherCard({
       <div className='flex justify-between items-start'>
         <div>
           <h1 className='text-2xl font-semibold'>📍 {currentDistrict}</h1>
-          <p className='text-sm text-gray-400 mt-1'>
-            Monday, 12 June • 14:30 PM
-          </p>
+          <p className='text-sm text-gray-400 ml-8 mt-2'>{formattedNow}</p>
           <div className='mt-6 flex items-center gap-4'>
             <span className='text-6xl font-bold'>
               {formatValue(ultraShortData?.T1H || '0')}°
