@@ -15,6 +15,10 @@ export function useShortTermForecast(nx: number, ny: number) {
         base_time,
       }),
     staleTime: 1000 * 60 * 10, // 10분
-    select: (data) => parseShortTermForecast(data.response.body.items.item), // 파싱된 데이터 반환
+    select: (data) => {
+      const items = data?.response?.body?.items?.item;
+      if (!Array.isArray(items)) return [];
+      return parseShortTermForecast(items);
+    },
   });
 }
