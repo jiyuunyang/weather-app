@@ -28,6 +28,7 @@ export async function fetchUltraShortNowcast({
   return res.json();
 }
 
+// 단기예보조회
 export async function fetchShortTermForecast({
   nx,
   ny,

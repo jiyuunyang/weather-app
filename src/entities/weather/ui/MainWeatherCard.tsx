@@ -1,52 +1,26 @@
-import LoadingSpinner from '@/shared/ui/LoadingSpinner';
-import { useShortTermForecast } from '../model/useShortTermForecast';
-import { useUltraShortNowcast } from '../model/useUltraShortNowcast';
-import ErrorMessage from '@/shared/ui/ErrorMessage';
-import { WeatherEmoji } from './WeatherEmoji';
 import { formatValue } from '../lib/formatValue';
-import { useFormattedNow } from '../lib/useFormattedNow';
+import type { ForecastByTime } from '../model/types';
+import { WeatherEmoji } from './WeatherEmoji';
 
-type MainWeatherCardProps = {
+interface MainWeatherCardProps {
   currentDistrict: string;
-  nx: number;
-  ny: number;
-};
+  now: string;
+  ultraShortData: Record<string, string>;
+  shortTermData: ForecastByTime[];
+}
 
 export default function MainWeatherCard({
   currentDistrict,
-  nx,
-  ny,
+  now,
+  ultraShortData,
+  shortTermData,
 }: MainWeatherCardProps) {
-  const {
-    data: ultraShortData,
-    isLoading: ultraShortIsLoading,
-    error: ultraShortError,
-  } = useUltraShortNowcast(nx, ny);
-
-  const {
-    data: shortTermData,
-    isLoading: shortTermIsLoading,
-    error: shortTermError,
-  } = useShortTermForecast(nx, ny);
-
-  const formattedNow = useFormattedNow();
-
-  const isLoading = ultraShortIsLoading || shortTermIsLoading;
-  const error = ultraShortError || shortTermError;
-
-  if (isLoading) {
-    return <LoadingSpinner />;
-  }
-  if (error) {
-    return <ErrorMessage message={(error as Error).message} />;
-  }
-
   return (
     <section className='bg-[#0F1C2E] rounded-3xl p-6 shadow-xl mb-10'>
       <div className='flex justify-between items-start'>
         <div>
           <h1 className='text-2xl font-semibold'>📍 {currentDistrict}</h1>
-          <p className='text-sm text-gray-400 ml-8 mt-2'>{formattedNow}</p>
+          <p className='text-sm text-gray-400 ml-8 mt-2'>{now}</p>
           <div className='mt-6 flex items-center gap-4'>
             <span className='text-6xl font-bold'>
               {formatValue(ultraShortData?.T1H || '0')}°
