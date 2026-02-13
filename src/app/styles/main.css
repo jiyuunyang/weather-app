@@ -2,11 +2,34 @@
 
 @theme {
   --color-primary: #3b82f6;
-  --color-banckground: #f3f4f6;
+  --color-background: #f3f4f6;
+  --color-background-dark: #0b1623;
+
+  --color-scrollbar-thumb: rgba(62, 67, 72, 0.5);
+  --color-scrollbar-thumb-dark: rgba(255, 255, 255, 0.3);
 }
 
-/* 전역 스타일 */
-body {
-  background-color: var(--color-banckground);
-  color: var(--color-gray-900);
+@layer base {
+  body {
+    background: var(--color-background);
+    color: var(--tw-color-gray-900);
+  }
+
+  .dark body {
+    background: var(--color-background-dark);
+    color: var(--tw-color-gray-100);
+  }
+
+  * {
+    scrollbar-width: thin;
+    scrollbar-color: transparent transparent;
+  }
+
+  *:hover {
+    scrollbar-color: var(--color-scrollbar-thumb) transparent;
+  }
+
+  .dark *:hover {
+    scrollbar-color: var(--color-scrollbar-thumb-dark) transparent;
+  }
 }
