@@ -80,7 +80,7 @@ export default function SearchInput() {
       {/* 모바일 전체 화면 오버레이 */}
       {isOpen && (
         <div
-          className='fixed inset-0 bg-black/50 z-50 flex items-start justify-center p-8'
+          className='fixed inset-0 bg-black/50 z-50 flex items-center justify-center p-8'
           onClick={() => setIsOpen(false)}
         >
           <div className='bg-card-background dark:bg-card-background-dark w-full max-w-md rounded-2xl shadow-lg p-4'>
