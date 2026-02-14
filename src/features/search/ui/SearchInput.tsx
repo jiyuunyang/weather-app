@@ -1,91 +1,18 @@
-// features/search/ui/SearchInput.tsx
-import { useState, useEffect } from 'react';
 import { FiSearch } from 'react-icons/fi';
-import koreaDistrictsXY from '@/entities/location/data/korea_districts_with_xy.json';
-import { useLocationStore } from '@/entities/location/model/locationStore';
-
-const normalize = (str: string) => str.trim().replace(/\s+/g, ' ');
+import { useSearchLocation } from '../model/useSearchLocation';
 
 export default function SearchInput() {
-  const [query, setQuery] = useState('');
-  const [filteredLocations, setFilteredLocations] = useState<string[]>([]);
-  const [activeIndex, setActiveIndex] = useState(-1);
-  const [isOpen, setIsOpen] = useState(false);
-  const { setSelectedLocation } = useLocationStore();
-
-  // 모바일 오버레이 열릴 때 스크롤 잠금
-  useEffect(() => {
-    if (isOpen) {
-      document.body.style.overflow = 'hidden';
-    } else {
-      document.body.style.overflow = '';
-    }
-  }, [isOpen]);
-
-  // 입력 처리
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const value = e.target.value;
-    setQuery(value);
-
-    if (!value.trim()) {
-      setFilteredLocations([]);
-      setActiveIndex(-1);
-      return;
-    }
-
-    const filtered = koreaDistrictsXY
-      .map((d) => d.name.replaceAll('-', ' '))
-      .filter((name) =>
-        normalize(name).toLowerCase().includes(normalize(value).toLowerCase()),
-      );
-
-    setFilteredLocations(filtered);
-    setActiveIndex(-1);
-  };
-
-  // 항목 선택
-  const handleSelect = (loc: string) => {
-    const matched = koreaDistrictsXY.find(
-      (d) => normalize(d.name.replaceAll('-', ' ')) === normalize(loc),
-    );
-
-    if (matched) {
-      setSelectedLocation(matched);
-      setQuery('');
-      setFilteredLocations([]);
-      setActiveIndex(-1);
-      setIsOpen(false);
-    }
-  };
-
-  // 키보드 이벤트
-  const handleKeyDown = (e: React.KeyboardEvent<HTMLInputElement>) => {
-    if (!filteredLocations.length) return;
-
-    if (e.key === 'ArrowDown') {
-      e.preventDefault();
-      setActiveIndex((prev) =>
-        prev < filteredLocations.length - 1 ? prev + 1 : 0,
-      );
-    } else if (e.key === 'ArrowUp') {
-      e.preventDefault();
-      setActiveIndex((prev) =>
-        prev > 0 ? prev - 1 : filteredLocations.length - 1,
-      );
-    } else if (e.key === 'Enter') {
-      if (activeIndex >= 0) {
-        handleSelect(filteredLocations[activeIndex]);
-      } else if (query.trim() !== '') {
-        handleSelect(query);
-      }
-    } else if (e.key === 'Escape') {
-      setFilteredLocations([]);
-      setActiveIndex(-1);
-      setIsOpen(false);
-    }
-  };
-
-  const showNoResults = query.trim() !== '' && filteredLocations.length === 0;
+  const {
+    query,
+    filteredLocations,
+    activeIndex,
+    isOpen,
+    setIsOpen,
+    handleChange,
+    handleSelect,
+    handleKeyDown,
+    showNoResults,
+  } = useSearchLocation();
 
   return (
     <>
@@ -112,7 +39,7 @@ export default function SearchInput() {
           type='text'
           placeholder='지역 검색...'
           value={query}
-          onChange={handleChange}
+          onChange={(e) => handleChange(e.target.value)}
           onKeyDown={handleKeyDown}
           className='w-full pl-10 pr-4 py-2 rounded-xl bg-card-highlight dark:bg-card-background-dark
                      placeholder-gray-400 focus:outline-none
@@ -166,7 +93,7 @@ export default function SearchInput() {
                 type='text'
                 placeholder='지역 검색...'
                 value={query}
-                onChange={handleChange}
+                onChange={(e) => handleChange(e.target.value)}
                 onKeyDown={handleKeyDown}
                 autoFocus
                 className='flex-1 pl-10 pr-4 py-2 rounded-xl bg-card-highlight dark:bg-card-background-dark
