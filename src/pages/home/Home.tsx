@@ -5,11 +5,14 @@ import { useCurrentLocation } from '@/features/get-location/model/useCurrentLoca
 import { Header } from '@/widgets/header/Header';
 import Footer from '@/shared/ui/Footer';
 import { useLocationStore } from '@/entities/location/model/locationStore';
-import WarningMessage from '@/shared/ui/AlertMessage';
+import WarningMessage from '@/shared/ui/WarningMessage';
+import type { Favorite } from '@/entities/favorite/model/types';
+import { useFavoriteStore } from '@/entities/favorite/model/useFavoriteStore';
 
 export default function Home() {
   useCurrentLocation();
   const { selectedLocation } = useLocationStore();
+  const { favorites } = useFavoriteStore();
 
   return (
     <>
@@ -29,12 +32,17 @@ export default function Home() {
         <section>
           <h2 className='text-lg font-semibold mb-4'>🩷 즐겨찾는 지역</h2>
           <div className='grid grid-cols-1 md:grid-cols-3 gap-4'>
-            <FavoriteLocationCard />
-            <FavoriteLocationCard />
-            <FavoriteLocationCard />
-            <button className='bg-card-background dark:bg-card-background-dark rounded-2xl text-gray-400 text-3xl'>
-              +
-            </button>
+            {favorites.length > 0 ? (
+              favorites.map((favorite: Favorite) => (
+                <FavoriteLocationCard key={favorite.name} favorite={favorite} />
+              ))
+            ) : (
+              <p>
+                즐겨찾는 지역이 없습니다.
+                <br />
+                위치를 검색하여 즐겨찾기에 추가해보세요!
+              </p>
+            )}
           </div>
         </section>
       </Layout>

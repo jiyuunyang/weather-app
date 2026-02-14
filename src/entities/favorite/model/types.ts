@@ -1,5 +1,5 @@
-export interface Favorite {
-  id: string; // uuid
-  name: string; // 지역 이름
+import type { District } from '@/entities/location/model/types';
+
+export interface Favorite extends District {
   nickname: string; // 별명
 }

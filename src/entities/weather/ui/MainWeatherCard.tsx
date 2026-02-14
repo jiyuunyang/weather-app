@@ -1,6 +1,7 @@
 import { formatValue } from '../lib/formatValue';
 import type { ForecastByTime } from '../model/types';
 import { WeatherEmoji } from './WeatherEmoji';
+import { FavoriteButton } from '@/entities/favorite/ui/FavoriteButton';
 
 interface MainWeatherCardProps {
   currentDistrict: string;
@@ -19,11 +20,11 @@ export default function MainWeatherCard({
     <section className='bg-card-background dark:bg-card-background-dark rounded-3xl p-6 shadow-xl mb-10'>
       <div className='flex justify-between items-start'>
         <div>
-          <h1 className='text-2xl font-semibold'>📍 {currentDistrict}</h1>
-          <p className='text-sm text-gray-400 ml-8 mt-2'>{now}</p>
+          <h1 className='text-2xl font-semibold'>{currentDistrict}</h1>
+          <p className='text-sm text-gray-400 mt-2'>{now}</p>
           <div className='mt-6 flex items-center gap-4'>
             <span className='text-6xl font-bold'>
-              {formatValue(ultraShortData?.T1H || '0')}°
+              {formatValue(ultraShortData?.T1H || '-')}°
             </span>
             <div>
               <WeatherEmoji
@@ -39,6 +40,12 @@ export default function MainWeatherCard({
         </div>
 
         <div className='grid grid-cols-1 gap-3 text-center'>
+          <div
+            className='bg-pink-100/50 dark:bg-card-background-dark 
+            px-4 py-3 rounded-xl flex flex-col items-center justify-center'
+          >
+            <FavoriteButton location={currentDistrict} />
+          </div>
           <div className='bg-card-highlight dark:bg-card-background-dark px-4 py-3 rounded-xl'>
             <p className='text-gray-400 text-sm'>습도</p>
             <p className='text-lg font-semibold'>
