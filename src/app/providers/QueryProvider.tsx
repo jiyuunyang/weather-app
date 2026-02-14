@@ -6,7 +6,7 @@ interface Props {
 }
 
 export const QueryProvider = ({ children }: Props) => {
-  // 컴포넌트 내부에서 상태로 관리하여 렌더링 시마다 인스턴스가 생성되는 것을 방지합니다.
+  // 컴포넌트 내부에서 상태로 관리하여 렌더링 시마다 인스턴스가 생성되는 것을 방지
   const [queryClient] = useState(
     () =>
       new QueryClient({

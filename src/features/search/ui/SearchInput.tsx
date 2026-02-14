@@ -11,7 +11,7 @@ export default function SearchInput() {
   const [filteredLocations, setFilteredLocations] = useState<string[]>([]);
   const [activeIndex, setActiveIndex] = useState(-1);
   const [isOpen, setIsOpen] = useState(false);
-  const { selectedLocation, setSelectedLocation } = useLocationStore();
+  const { setSelectedLocation } = useLocationStore();
 
   // 모바일 오버레이 열릴 때 스크롤 잠금
   useEffect(() => {
@@ -51,7 +51,7 @@ export default function SearchInput() {
 
     if (matched) {
       setSelectedLocation(matched);
-      setQuery(loc);
+      setQuery('');
       setFilteredLocations([]);
       setActiveIndex(-1);
       setIsOpen(false);
@@ -85,10 +85,7 @@ export default function SearchInput() {
     }
   };
 
-  const showNoResults =
-    query.trim() !== '' &&
-    filteredLocations.length === 0 &&
-    selectedLocation?.name !== query.trim().replaceAll(' ', '-');
+  const showNoResults = query.trim() !== '' && filteredLocations.length === 0;
 
   return (
     <>
