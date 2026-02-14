@@ -5,22 +5,27 @@ import { useCurrentLocation } from '@/features/get-location/model/useCurrentLoca
 import { Header } from '@/widgets/header/Header';
 import Footer from '@/shared/ui/Footer';
 import { useLocationStore } from '@/entities/location/model/locationStore';
+import WarningMessage from '@/shared/ui/AlertMessage';
 
 export default function Home() {
   useCurrentLocation();
   const { selectedLocation } = useLocationStore();
 
-  console.log('현재 선택된 위치:', selectedLocation);
-
   return (
     <>
       <Header />
       <Layout>
-        <MainWeatherCard
-          currentDistrict={selectedLocation?.name || ''}
-          nx={selectedLocation?.x || 0}
-          ny={selectedLocation?.y || 0}
-        />
+        {selectedLocation ? (
+          <MainWeatherCard
+            currentDistrict={selectedLocation?.name || ''}
+            nx={selectedLocation?.x || 0}
+            ny={selectedLocation?.y || 0}
+          />
+        ) : (
+          <WarningMessage
+            message={`위치를 불러오는 중입니다.\n위치 권한을 허용했는지 확인해주세요.`}
+          />
+        )}
         <section>
           <h2 className='text-lg font-semibold mb-4'>🩷 즐겨찾는 지역</h2>
           <div className='grid grid-cols-1 md:grid-cols-3 gap-4'>
