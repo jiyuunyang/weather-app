@@ -1,4 +1,5 @@
 @import 'tailwindcss';
+@custom-variant dark (&:where(.dark, .dark *));
 
 /* -------------------------------------------------------------------------- */
 /*  Theme Tokens                                                              */
@@ -37,9 +38,6 @@
   .dark body {
     background: var(--color-background-dark);
     color: var(--color-text-dark);
-
-    --color-card-background: var(--color-card-background-dark);
-    --color-card-highlight: var(--color-card-highlight-dark);
   }
 
   /* ---------------------------------------------------------------------- */

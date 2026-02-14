@@ -41,18 +41,18 @@ export default function MainWeatherCard({
 
         <div className='grid grid-cols-1 gap-3 text-center'>
           <div
-            className='bg-pink-100/50 dark:bg-card-background-dark 
+            className='bg-pink-100/50 dark:bg-card-highlight-dark 
             px-4 py-3 rounded-xl flex flex-col items-center justify-center'
           >
             <FavoriteButton location={currentDistrict} />
           </div>
-          <div className='bg-card-highlight dark:bg-card-background-dark px-4 py-3 rounded-xl'>
+          <div className='bg-card-highlight dark:bg-card-highlight-dark px-4 py-3 rounded-xl'>
             <p className='text-gray-400 text-sm'>습도</p>
             <p className='text-lg font-semibold'>
               {ultraShortData?.REH || '-'}%
             </p>
           </div>
-          <div className='bg-card-highlight dark:bg-card-background-dark px-4 py-3 rounded-xl'>
+          <div className='bg-card-highlight dark:bg-card-highlight-dark px-4 py-3 rounded-xl'>
             <p className='text-gray-400 text-sm'>풍속</p>
             <p className='text-lg font-semibold'>
               {ultraShortData?.WSD || '-'} km/h
