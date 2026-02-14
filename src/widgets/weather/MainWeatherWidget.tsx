@@ -6,7 +6,7 @@ import { useFormattedNow } from '@/entities/weather/lib/useFormattedNow';
 import MainWeatherCard from '@/entities/weather/ui/MainWeatherCard';
 
 type MainWeatherWidgetProps = {
-  currentDistrict: string;
+  currentDistrict: string | null;
   nx: number;
   ny: number;
 };
@@ -33,6 +33,10 @@ export default function MainWeatherWidget({
   const isLoading = ultraShortIsLoading || shortTermIsLoading;
   const error = ultraShortError || shortTermError;
 
+  if (!currentDistrict) {
+    return <ErrorMessage message='위치를 선택해주세요.' />;
+  }
+
   if (isLoading) {
     return <LoadingSpinner />;
   }
@@ -45,7 +49,7 @@ export default function MainWeatherWidget({
 
   return (
     <MainWeatherCard
-      currentDistrict={currentDistrict}
+      currentDistrict={currentDistrict.replaceAll('-', ' ')}
       now={formattedNow}
       ultraShortData={ultraShortData}
       shortTermData={shortTermData}

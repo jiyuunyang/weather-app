@@ -3,7 +3,7 @@ import ThemeToggle from '@/features/theme-toggle/ui/ThemeToggle';
 
 export function Header() {
   return (
-    <header className='flex items-center justify-between mb-6'>
+    <header className='flex items-center justify-between p-4'>
       {/* Left */}
       <div className='text-xl font-semibold flex items-center gap-2'>
         🇰🇷 한국 날씨정보

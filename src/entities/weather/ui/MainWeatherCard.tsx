@@ -16,7 +16,7 @@ export default function MainWeatherCard({
   shortTermData,
 }: MainWeatherCardProps) {
   return (
-    <section className='bg-[#0F1C2E] rounded-3xl p-6 shadow-xl mb-10'>
+    <section className='bg-card-background dark:bg-card-background-dark rounded-3xl p-6 shadow-xl mb-10'>
       <div className='flex justify-between items-start'>
         <div>
           <h1 className='text-2xl font-semibold'>📍 {currentDistrict}</h1>
@@ -26,7 +26,10 @@ export default function MainWeatherCard({
               {formatValue(ultraShortData?.T1H || '0')}°
             </span>
             <div>
-              <WeatherEmoji ptyCode={Number(ultraShortData?.PTY)} />
+              <WeatherEmoji
+                ptyCode={Number(ultraShortData?.PTY)}
+                skyCode={Number(shortTermData?.[0]?.data?.SKY)}
+              />
               <div className='text-sm text-gray-400'>
                 H: {shortTermData?.[0]?.data?.TMX || '-'}° • L:
                 {shortTermData?.[0]?.data?.TMN || '-'}°
@@ -36,13 +39,13 @@ export default function MainWeatherCard({
         </div>
 
         <div className='grid grid-cols-1 gap-3 text-center'>
-          <div className='bg-[#132235] px-4 py-3 rounded-xl'>
+          <div className='bg-card-highlight dark:bg-card-background-dark px-4 py-3 rounded-xl'>
             <p className='text-gray-400 text-sm'>습도</p>
             <p className='text-lg font-semibold'>
               {ultraShortData?.REH || '-'}%
             </p>
           </div>
-          <div className='bg-[#132235] px-4 py-3 rounded-xl'>
+          <div className='bg-card-highlight dark:bg-card-background-dark px-4 py-3 rounded-xl'>
             <p className='text-gray-400 text-sm'>풍속</p>
             <p className='text-lg font-semibold'>
               {ultraShortData?.WSD || '-'} km/h

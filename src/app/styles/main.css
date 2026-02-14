@@ -1,24 +1,50 @@
 @import 'tailwindcss';
 
+/* -------------------------------------------------------------------------- */
+/*  Theme Tokens                                                              */
+/* -------------------------------------------------------------------------- */
+
 @theme {
-  --color-primary: #3b82f6;
+  --color-primary: #22c55e;
+
+  /* 배경 & 텍스트 */
   --color-background: #f3f4f6;
   --color-background-dark: #0b1623;
+  --color-text: #111827;
+  --color-text-dark: #f3f4f6;
 
-  --color-scrollbar-thumb: rgba(62, 67, 72, 0.5);
-  --color-scrollbar-thumb-dark: rgba(255, 255, 255, 0.3);
+  /* 카드 */
+  --color-card-background: #ffffff;
+  --color-card-background-dark: #132235;
+  --color-card-highlight: rgba(0, 0, 0, 0.05);
+  --color-card-highlight-dark: rgba(255, 255, 255, 0.05);
+
+  /* 스크롤바 */
+  --color-scrollbar-thumb: rgba(0, 0, 0, 0.05);
+  --color-scrollbar-thumb-dark: rgba(255, 255, 255, 0.05);
 }
+
+/* -------------------------------------------------------------------------- */
+/*  Base Styles                                                               */
+/* -------------------------------------------------------------------------- */
 
 @layer base {
   body {
     background: var(--color-background);
-    color: var(--tw-color-gray-900);
+    color: var(--color-text);
   }
 
   .dark body {
     background: var(--color-background-dark);
-    color: var(--tw-color-gray-100);
+    color: var(--color-text-dark);
+
+    --color-card-background: var(--color-card-background-dark);
+    --color-card-highlight: var(--color-card-highlight-dark);
   }
+
+  /* ---------------------------------------------------------------------- */
+  /*  Scrollbar                                                             */
+  /* ---------------------------------------------------------------------- */
 
   * {
     scrollbar-width: thin;

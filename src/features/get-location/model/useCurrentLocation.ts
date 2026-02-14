@@ -1,20 +1,17 @@
-import { useEffect, useState } from 'react';
+// features/get-location/model/useCurrentLocation.ts
+import { useEffect } from 'react';
 import koreaDistrictsXY from '@/entities/location/data/korea_districts_with_xy.json';
 import { findNearest } from '@/entities/location/lib/findNearest';
+import { useLocationStore } from '@/entities/location/model/locationStore';
 
 export function useCurrentLocation() {
-  const [district, setDistrict] = useState<string>('');
-  const [xy, setXY] = useState<{ x: number; y: number }>({ x: 0, y: 0 });
+  const { setSelectedLocation } = useLocationStore();
 
   useEffect(() => {
     navigator.geolocation.getCurrentPosition((position) => {
       const { latitude, longitude } = position.coords;
-      const result = findNearest(latitude, longitude, koreaDistrictsXY);
-
-      setDistrict(result.name.replace('-', ' '));
-      setXY({ x: result.x, y: result.y });
+      const nearest = findNearest(latitude, longitude, koreaDistrictsXY);
+      setSelectedLocation(nearest);
     });
-  }, []);
-
-  return { district, xy };
+  }, [setSelectedLocation]);
 }
