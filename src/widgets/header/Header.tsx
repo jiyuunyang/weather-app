@@ -1,3 +1,4 @@
+import CurrentLocationButton from '@/features/get-location/ui/CurrentLocationButton';
 import SearchInput from '@/features/search/ui/SearchInput';
 import ThemeToggle from '@/features/theme-toggle/ui/ThemeToggle';
 
@@ -16,6 +17,7 @@ export function Header() {
 
       {/* Right */}
       <div>
+        <CurrentLocationButton />
         <ThemeToggle />
       </div>
     </header>
