@@ -91,10 +91,18 @@ export default function SearchInput() {
     <>
       {/* 모바일 돋보기 버튼 */}
       <button
-        className='md:hidden p-2 ml-auto mr-3 rounded-full bg-card-highlight dark:bg-card-background-dark shadow-md'
+        className='md:hidden relative inline-block group p-2 ml-auto mr-3 rounded-full bg-card-highlight dark:bg-card-background-dark shadow-md cursor-pointer'
         onClick={() => setIsOpen(true)}
       >
         <FiSearch className='text-lg' />
+        {/* 툴팁 */}
+        <div
+          className='absolute top-full left-1/2 transform -translate-x-1/2 
+                    w-max max-w-xs bg-black text-white text-sm rounded-md px-1 py-0.5 mt-1
+                    opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none z-10'
+        >
+          검색하기
+        </div>
       </button>
 
       {/* PC 검색창 */}
