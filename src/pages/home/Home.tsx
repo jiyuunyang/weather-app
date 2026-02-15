@@ -21,7 +21,7 @@ export default function Home() {
       <Layout>
         {selectedLocation ? (
           <MainWeatherCard
-            currentDistrict={selectedLocation?.name || ''}
+            currentLocation={selectedLocation?.name || ''}
             nx={selectedLocation?.x || 0}
             ny={selectedLocation?.y || 0}
           />

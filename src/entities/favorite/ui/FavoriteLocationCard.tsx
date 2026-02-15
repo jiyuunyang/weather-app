@@ -57,15 +57,18 @@ export default function FavoriteLocationCard({
       transition-shadow duration-300'
     >
       <div className='flex justify-between items-center'>
-        <p className='text-sm text-gray-400'>{favorite.nickname}</p>
+        <h2>
+          <p className='text-lg'>{favorite.nickname} </p>
+        </h2>
         <div className='flex gap-2'>
           <EditNicknameButton location={favorite.name} />
           <DeleteFavoriteButton location={favorite.name} />
         </div>
       </div>
-      <h3 className='text-3xl font-semibold mt-2'>
+      <h3 className='text-3xl font-semibold'>
         {formatValue(ultraShortData?.T1H || '-')}°
       </h3>
+      <p className='text-sm text-gray-400'>{favorite.name}</p>
       <p className='text-right text-gray-300 text-sm'>
         <WeatherEmoji
           ptyCode={Number(ultraShortData?.PTY)}

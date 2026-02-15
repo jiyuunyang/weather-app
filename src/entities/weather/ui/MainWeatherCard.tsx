@@ -4,14 +4,14 @@ import { WeatherEmoji } from './WeatherEmoji';
 import { FavoriteButton } from '@/entities/favorite/ui/FavoriteButton';
 
 interface MainWeatherCardProps {
-  currentDistrict: string;
+  currentLocation: string;
   now: string;
   ultraShortData: Record<string, string>;
   shortTermData: ForecastByTime[];
 }
 
 export default function MainWeatherCard({
-  currentDistrict,
+  currentLocation,
   now,
   ultraShortData,
   shortTermData,
@@ -20,7 +20,7 @@ export default function MainWeatherCard({
     <section className='bg-card-background dark:bg-card-background-dark rounded-3xl p-6 shadow-xl mb-10'>
       <div className='flex justify-between items-start'>
         <div>
-          <h1 className='text-2xl font-semibold'>{currentDistrict}</h1>
+          <h1 className='text-2xl font-semibold'>{currentLocation}</h1>
           <p className='text-sm text-gray-400 mt-2'>{now}</p>
           <div className='mt-6 flex items-center gap-4'>
             <span className='text-6xl font-bold'>
@@ -44,7 +44,7 @@ export default function MainWeatherCard({
             className='bg-pink-100/50 dark:bg-card-highlight-dark 
             px-4 py-3 rounded-xl flex flex-col items-center justify-center'
           >
-            <FavoriteButton location={currentDistrict} />
+            <FavoriteButton location={currentLocation} />
           </div>
           <div className='bg-card-highlight dark:bg-card-highlight-dark px-4 py-3 rounded-xl'>
             <p className='text-gray-400 text-sm'>습도</p>

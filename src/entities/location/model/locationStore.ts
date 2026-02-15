@@ -1,13 +1,13 @@
 // entities/location/model/locationStore.ts
 import { create } from 'zustand';
-import type { District } from './types';
+import type { Location } from './types';
 
 interface LocationState {
-  selectedLocation: District | null;
-  setSelectedLocation: (loc: District | null) => void;
+  selectedLocation: Location | null;
+  setSelectedLocation: (loc: Location | null) => void;
 }
 
 export const useLocationStore = create<LocationState>((set) => ({
   selectedLocation: null,
-  setSelectedLocation: (loc: District | null) => set({ selectedLocation: loc }),
+  setSelectedLocation: (loc: Location | null) => set({ selectedLocation: loc }),
 }));

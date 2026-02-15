@@ -1,8 +1,8 @@
-import type { District } from '@/entities/location/model/types';
+import type { Location } from '@/entities/location/model/types';
 import fs from 'fs';
 
 // JSON 파일 읽기
-const districtsWithXY: District[] = JSON.parse(
+const districtsWithXY: Location[] = JSON.parse(
   fs.readFileSync('./korea_districts_with_xy.json', 'utf-8'),
 );
 

@@ -1,7 +1,7 @@
 import { create } from 'zustand';
 import { persist } from 'zustand/middleware';
 import type { Favorite } from './types';
-import koreaDistrictsXY from '@/entities/location/data/korea_districts_with_xy.json';
+import koreaLocationsXY from '@/entities/location/data/korea_districts_with_xy.json';
 import { normalize } from '@/shared/lib/utils/normalize';
 
 interface FavoriteState {
@@ -21,7 +21,7 @@ export const useFavoriteStore = create<FavoriteState>()(
           alert('즐겨찾기는 최대 6개까지 추가할 수 있습니다.');
           return;
         }
-        const locationInfo = koreaDistrictsXY.find(
+        const locationInfo = koreaLocationsXY.find(
           (d) => normalize(d.name.replaceAll('-', ' ')) === normalize(name),
         );
         if (!locationInfo) return;

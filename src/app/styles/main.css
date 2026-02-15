@@ -8,20 +8,18 @@
 @theme {
   --color-primary: #22c55e;
 
-  /* 배경 & 텍스트 */
+  /* 라이트모드 */
   --color-background: #f3f4f6;
-  --color-background-dark: #0b1623;
   --color-text: #111827;
-  --color-text-dark: #f3f4f6;
-
-  /* 카드 */
   --color-card-background: #ffffff;
-  --color-card-background-dark: #132235;
   --color-card-highlight: rgba(0, 0, 0, 0.05);
-  --color-card-highlight-dark: rgba(255, 255, 255, 0.05);
-
-  /* 스크롤바 */
   --color-scrollbar-thumb: rgba(0, 0, 0, 0.05);
+
+  /* 다크모드 */
+  --color-background-dark: #0b1623;
+  --color-text-dark: #f3f4f6;
+  --color-card-background-dark: #132235;
+  --color-card-highlight-dark: rgba(255, 255, 255, 0.05);
   --color-scrollbar-thumb-dark: rgba(255, 255, 255, 0.05);
 }
 

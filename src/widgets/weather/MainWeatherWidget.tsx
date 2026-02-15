@@ -6,13 +6,13 @@ import { useFormattedNow } from '@/entities/weather/lib/useFormattedNow';
 import MainWeatherCard from '@/entities/weather/ui/MainWeatherCard';
 
 type MainWeatherWidgetProps = {
-  currentDistrict: string | null;
+  currentLocation: string | null;
   nx: number;
   ny: number;
 };
 
 export default function MainWeatherWidget({
-  currentDistrict,
+  currentLocation,
   nx,
   ny,
 }: MainWeatherWidgetProps) {
@@ -33,7 +33,7 @@ export default function MainWeatherWidget({
   const isLoading = ultraShortIsLoading || shortTermIsLoading;
   const error = ultraShortError || shortTermError;
 
-  if (!currentDistrict) {
+  if (!currentLocation) {
     return <ErrorMessage message='위치를 선택해주세요.' />;
   }
 
@@ -49,7 +49,7 @@ export default function MainWeatherWidget({
 
   return (
     <MainWeatherCard
-      currentDistrict={currentDistrict.replaceAll('-', ' ')}
+      currentLocation={currentLocation.replaceAll('-', ' ')}
       now={formattedNow}
       ultraShortData={ultraShortData}
       shortTermData={shortTermData}

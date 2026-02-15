@@ -1,5 +1,5 @@
-import type { District } from '@/entities/location/model/types';
+import type { Location } from '@/entities/location/model/types';
 
-export interface Favorite extends District {
+export interface Favorite extends Location {
   nickname: string; // 별명
 }

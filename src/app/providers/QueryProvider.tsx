@@ -12,7 +12,7 @@ export const QueryProvider = ({ children }: Props) => {
       new QueryClient({
         defaultOptions: {
           queries: {
-            staleTime: 60 * 1000,
+            staleTime: 60 * 1000 * 10, //초단기 실황 10분 단위로 갱신됨
           },
         },
       }),

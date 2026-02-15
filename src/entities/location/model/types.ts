@@ -1,4 +1,4 @@
-export interface District {
+export interface Location {
   name: string;
   lat: number;
   lon: number;

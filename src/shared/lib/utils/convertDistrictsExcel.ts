@@ -1,7 +1,7 @@
 import fs from 'fs';
 import xlsx from 'xlsx';
 
-interface DistrictRow {
+interface LocationRow {
   '1단계'?: string;
   '2단계'?: string;
   '3단계'?: string;
@@ -17,7 +17,7 @@ const sheetName = workbook.SheetNames[0]; // 첫 번째 시트
 const sheet = workbook.Sheets[sheetName];
 
 // 시트 → JSON
-const data = xlsx.utils.sheet_to_json<DistrictRow>(sheet);
+const data = xlsx.utils.sheet_to_json<LocationRow>(sheet);
 
 // 변환
 const result = data.map((row) => {

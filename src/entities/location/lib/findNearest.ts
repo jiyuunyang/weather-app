@@ -1,4 +1,4 @@
-import type { District } from '../model/types';
+import type { Location } from '../model/types';
 
 function haversine(lat1: number, lon1: number, lat2: number, lon2: number) {
   const R = 6371e3; // meters
@@ -16,7 +16,7 @@ function haversine(lat1: number, lon1: number, lat2: number, lon2: number) {
   return R * c; // meters
 }
 
-export function findNearest(lat: number, lon: number, list: District[]) {
+export function findNearest(lat: number, lon: number, list: Location[]) {
   let nearest = list[0];
   let minDist = haversine(lat, lon, list[0].lat, list[0].lon);
 
