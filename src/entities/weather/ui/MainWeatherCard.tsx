@@ -49,13 +49,14 @@ export default function MainWeatherCard({
           <div className='bg-card-highlight dark:bg-card-highlight-dark px-4 py-3 rounded-xl'>
             <p className='text-gray-400 text-sm'>습도</p>
             <p className='text-lg font-semibold'>
-              {ultraShortData?.REH || '-'}%
+              {ultraShortData?.REH || '-'}
+              <span className='text-sm'>%</span>
             </p>
           </div>
           <div className='bg-card-highlight dark:bg-card-highlight-dark px-4 py-3 rounded-xl'>
             <p className='text-gray-400 text-sm'>풍속</p>
             <p className='text-lg font-semibold'>
-              {ultraShortData?.WSD || '-'} km/h
+              {ultraShortData?.WSD || '-'} <span className='text-sm'>km/h</span>
             </p>
           </div>
         </div>
