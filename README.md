@@ -10,14 +10,15 @@
 
 > Mobile 화면
 
-<img width="495" height="661" alt="스크린샷 2026-02-16 오전 12 47 53" src="https://github.com/user-attachments/assets/ccfc4568-69a1-4194-a096-0e46be90f5b6" /> 
+<img width="495" height="661" alt="스크린샷 2026-02-16 오전 12 47 53" src="https://github.com/user-attachments/assets/ccfc4568-69a1-4194-a096-0e46be90f5b6" />
 
 > 시연 영상
 
 ![project_movie](https://github.com/user-attachments/assets/7b17602f-2a9b-410e-bfb0-cbaa8bd5c8dd)
 
-
 ## 프로젝트 실행 방법
+
+### 실행 방법
 
 1. Node.js 설치
    - 이 프로젝트는 아래 버전을 권장합니다:
@@ -46,7 +47,98 @@ http://localhost:5173
 6. 빌드 결과 미리보기
    `npm run preview`
 
----
+### 구조도
+
+```
+src/
+├── entities
+│   ├── location
+│   │   ├── lib
+│   │   │   └── findNearest.ts
+│   │   ├── model
+│   │   │   ├── types.ts
+│   │   │   └── locationStore.ts
+│   │   └── data
+│   │       ├── korea_districts_with_xy.json
+│   │       └── korea_districts.json
+│   ├── weather
+│   │   ├── api
+│   │   │   └── weatherApi.ts
+│   │   ├── model
+│   │   │   ├── types.ts
+│   │   │   ├── useShortTermForecast.ts
+│   │   │   └── useUltraShortNowcast.ts
+│   │   ├── ui
+│   │   │   └── WeatherEmoji.tsx
+│   │   └── lib
+│   │       ├── parseUltraShortNowcast.ts
+│   │       ├── emojiMaps.ts
+│   │       ├── categoryInfo.ts
+│   │       ├── getForecastTime.ts
+│   │       ├── getBaseDateTime.ts
+│   │       ├── parseShortTermForecast.ts
+│   │       ├── useFormattedNow.ts
+│   │       ├── getWeatherEmoji.ts
+│   │       └── lcc.ts
+│   └── favorite
+│       └── model
+│           ├── types.ts
+│           └── useFavoriteStore.ts
+├── app
+│   ├── main.tsx
+│   ├── providers
+│   │   └── QueryProvider.tsx
+│   ├── App.tsx
+│   └── styles
+│       └── main.css
+├── features
+│   ├── get-location
+│   │   └── model
+│   │       ├── useCurrentLocation.ts
+│   │       └── useInitCurrentLocation.ts
+│   ├── search
+│   │   └── model
+│   │       └── useSearchLocation.ts
+│   └── theme-toggle
+│       └── model
+│           └── useTheme.ts
+├── pages
+│   └── home
+│       └── Home.tsx
+├── shared
+│   ├── assets
+│   │   └── react.svg
+│   ├── ui
+│   │   ├── LoadingSpinner.tsx
+│   │   ├── Footer.tsx
+│   │   ├── Layout.tsx
+│   │   ├── WarningMessage.tsx
+│   │   └── ErrorMessage.tsx
+│   ├── lib
+│   │   └── utils
+│   │       ├── formatValue.ts
+│   │       ├── convertDistrictsExcel.ts
+│   │       ├── convertDistrictsName.ts
+│   │       └── normalizeString.ts
+│   └── data
+│       └── xy_district.xlsx
+└── widgets
+    ├── weather
+    │   ├── FavoriteButton.tsx
+    │   ├── MainWeatherCard.tsx
+    │   └── MainWeatherWidget.tsx
+    ├── header
+    │   ├── Header.tsx
+    │   ├── SearchInput.tsx
+    │   ├── ThemeToggle.tsx
+    │   └── CurrentLocationButton.tsx
+    └── favorite
+        ├── NoFavoriteLocationCard.tsx
+        ├── DeleteFavoriteButton.tsx
+        ├── EditNicknameButton.tsx
+        ├── FavoriteLocationWidget.tsx
+        └── FavoriteLocationCard.tsx
+```
 
 ## 구현한 기능에 대한 설명
 
