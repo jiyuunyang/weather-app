@@ -3,14 +3,16 @@
 한국 기상청 단기예보 API를 이용해 **현재 위치 기반 날씨 확인**, **지역 검색**, **즐겨찾기 관리**, **테마 전환** 기능을 제공하는 웹 서비스입니다.  
 브라우저에서 간단히 현재 지역의 날씨를 빠르게 확인할 수 있도록 제작되었습니다.
 배포된 서비스는 해당 [링크](https://weather-app-zeta-ten-87.vercel.app/)를 통해 접근할 수 있습니다.
-<img width="790" height="653" alt="스크린샷 2026-02-16 오전 12 49 39" src="https://github.com/user-attachments/assets/7ff3a585-4469-452b-b44c-21d75af44d33" />
+
 > PC 화면
+<img width="790" height="653" alt="스크린샷 2026-02-16 오전 12 49 39" src="https://github.com/user-attachments/assets/7ff3a585-4469-452b-b44c-21d75af44d33" />
 
-<img width="495" height="661" alt="스크린샷 2026-02-16 오전 12 47 53" src="https://github.com/user-attachments/assets/ccfc4568-69a1-4194-a096-0e46be90f5b6" />
 > Mobile 화면
+<img width="495" height="661" alt="스크린샷 2026-02-16 오전 12 47 53" src="https://github.com/user-attachments/assets/ccfc4568-69a1-4194-a096-0e46be90f5b6" /> 
 
-https://github.com/user-attachments/assets/35b37dec-4c04-4af7-8b15-17e368b2b458
 > 시연 영상
+https://github.com/user-attachments/assets/35b37dec-4c04-4af7-8b15-17e368b2b458
+
 
 ## 프로젝트 실행 방법
 
