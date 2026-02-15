@@ -5,12 +5,15 @@
 배포된 서비스는 해당 [링크](https://weather-app-zeta-ten-87.vercel.app/)를 통해 접근할 수 있습니다.
 
 > PC 화면
+
 <img width="790" height="653" alt="스크린샷 2026-02-16 오전 12 49 39" src="https://github.com/user-attachments/assets/7ff3a585-4469-452b-b44c-21d75af44d33" />
 
 > Mobile 화면
+
 <img width="495" height="661" alt="스크린샷 2026-02-16 오전 12 47 53" src="https://github.com/user-attachments/assets/ccfc4568-69a1-4194-a096-0e46be90f5b6" /> 
 
 > 시연 영상
+
 ![project_movie](https://github.com/user-attachments/assets/7b17602f-2a9b-410e-bfb0-cbaa8bd5c8dd)
 
 
