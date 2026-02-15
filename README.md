@@ -11,7 +11,7 @@
 <img width="495" height="661" alt="스크린샷 2026-02-16 오전 12 47 53" src="https://github.com/user-attachments/assets/ccfc4568-69a1-4194-a096-0e46be90f5b6" /> 
 
 > 시연 영상
-https://github.com/user-attachments/assets/35b37dec-4c04-4af7-8b15-17e368b2b458
+![project_movie](https://github.com/user-attachments/assets/7b17602f-2a9b-410e-bfb0-cbaa8bd5c8dd)
 
 
 ## 프로젝트 실행 방법
