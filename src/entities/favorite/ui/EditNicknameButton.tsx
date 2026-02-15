@@ -11,9 +11,13 @@ export function EditNicknameButton({ location }: EditNicknameButtonProps) {
   const [isOpen, setIsOpen] = useState(false);
   const [nickname, setNickname] = useState('');
 
-  const openModal = () => {
+  const openModal = (e: React.MouseEvent) => {
+    e.stopPropagation(); // 상위 클릭 이벤트(자동 스크롤) 방지
     setNickname(''); // 초기화
     setIsOpen(true);
+  };
+  const closeModal = () => {
+    setIsOpen(false);
   };
 
   const saveNickname = () => {
@@ -26,7 +30,7 @@ export function EditNicknameButton({ location }: EditNicknameButtonProps) {
   return (
     <>
       <button
-        onClick={openModal}
+        onClick={(e) => openModal(e)}
         className='relative inline-block group text-xl cursor-pointer'
       >
         <PiPencilSimple />
@@ -41,7 +45,10 @@ export function EditNicknameButton({ location }: EditNicknameButtonProps) {
 
       {/* 모달 */}
       {isOpen && (
-        <div className='fixed inset-0 bg-black/50 z-50 flex items-center justify-center p-8'>
+        <div
+          onClick={(e) => e.stopPropagation()}
+          className='fixed inset-0 bg-black/50 z-50 flex items-center justify-center p-8'
+        >
           <div className='bg-card-background dark:bg-card-background-dark rounded-2xl p-5 w-80'>
             <h3 className='text-lg font-semibold mb-3'>별명 수정</h3>
             <input
@@ -55,7 +62,7 @@ export function EditNicknameButton({ location }: EditNicknameButtonProps) {
             />
             <div className='mt-4 flex justify-end gap-2'>
               <button
-                onClick={() => setIsOpen(false)}
+                onClick={closeModal}
                 className='px-3 py-1 rounded-md bg-gray-200 dark:bg-gray-600 text-gray-700 dark:text-gray-200 cursor-pointer'
               >
                 취소

@@ -10,8 +10,13 @@ export function DeleteFavoriteButton({ location }: DeleteFavoriteButtonProps) {
   const { removeFavorite } = useFavoriteStore();
   const [isOpen, setIsOpen] = useState(false);
 
-  const openModal = () => {
+  const openModal = (e: React.MouseEvent) => {
+    e.stopPropagation();
     setIsOpen(true);
+  };
+
+  const closeModal = () => {
+    setIsOpen(false);
   };
 
   const deleteFavoriteLocation = () => {
@@ -22,7 +27,7 @@ export function DeleteFavoriteButton({ location }: DeleteFavoriteButtonProps) {
   return (
     <>
       <button
-        onClick={openModal}
+        onClick={(e) => openModal(e)}
         className='relative inline-block group text-xl cursor-pointer'
       >
         <PiTrash />
@@ -37,12 +42,15 @@ export function DeleteFavoriteButton({ location }: DeleteFavoriteButtonProps) {
 
       {/* 모달 */}
       {isOpen && (
-        <div className='fixed inset-0 bg-black/50 z-50 flex items-center justify-center p-8'>
+        <div
+          onClick={(e) => e.stopPropagation()}
+          className='fixed inset-0 bg-black/50 z-50 flex items-center justify-center p-8'
+        >
           <div className='bg-card-background dark:bg-card-background-dark rounded-2xl p-5 w-80'>
             <h3 className='text-lg font-semibold mb-3'>정말 지우시겠습니까?</h3>
             <div className='mt-4 flex justify-end gap-2'>
               <button
-                onClick={() => setIsOpen(false)}
+                onClick={closeModal}
                 className='px-3 py-1 rounded-md bg-gray-200 dark:bg-gray-600 text-gray-700 dark:text-gray-200 cursor-pointer'
               >
                 취소
