@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { PiPencilSimple } from 'react-icons/pi';
-import { useFavoriteStore } from '../../entities/favorite/model/useFavoriteStore';
+import { useFavoriteStore } from '@/entities/favorite/model/useFavoriteStore';
 
 interface EditNicknameButtonProps {
   location: string;
@@ -16,6 +16,7 @@ export function EditNicknameButton({ location }: EditNicknameButtonProps) {
     setNickname(''); // 초기화
     setIsOpen(true);
   };
+
   const closeModal = () => {
     setIsOpen(false);
   };

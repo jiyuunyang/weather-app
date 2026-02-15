@@ -1,4 +1,4 @@
-import { getWeatherEmoji } from '../lib/getWeatherEmoji';
+import { getWeatherEmoji } from '@/entities/weather/lib/getWeatherEmoji';
 
 export function WeatherEmoji({
   ptyCode,

@@ -1,7 +1,7 @@
-import { formatValue } from '../../shared/lib/utils/formatValue';
-import type { ForecastByTime } from '../../entities/weather/model/types';
-import { WeatherEmoji } from '../../entities/weather/ui/WeatherEmoji';
-import { FavoriteButton } from '@/widgets/weather/FavoriteButton';
+import { formatValue } from '@/shared/lib/utils/formatValue';
+import type { ForecastByTime } from '@/entities/weather/model/types';
+import { WeatherEmoji } from '@/shared/ui/WeatherEmoji';
+import { WeatherFavoriteButton } from './WeatherFavoriteButton';
 
 interface MainWeatherCardProps {
   currentLocation: string;
@@ -44,7 +44,7 @@ export default function MainWeatherCard({
             className='bg-pink-100/50 dark:bg-card-highlight-dark 
             px-4 py-3 rounded-xl flex flex-col items-center justify-center'
           >
-            <FavoriteButton location={currentLocation} />
+            <WeatherFavoriteButton location={currentLocation} />
           </div>
           <div className='bg-card-highlight dark:bg-card-highlight-dark px-4 py-3 rounded-xl'>
             <p className='text-gray-400 text-sm'>습도</p>

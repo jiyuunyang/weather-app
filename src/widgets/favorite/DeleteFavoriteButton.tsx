@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { PiTrash } from 'react-icons/pi';
-import { useFavoriteStore } from '../../entities/favorite/model/useFavoriteStore';
+import { useFavoriteStore } from '@/entities/favorite/model/useFavoriteStore';
 
 interface DeleteFavoriteButtonProps {
   location: string;

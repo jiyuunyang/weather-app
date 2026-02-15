@@ -1,12 +1,14 @@
 import { MdFavorite, MdFavoriteBorder } from 'react-icons/md';
-import { useFavoriteStore } from '../../entities/favorite/model/useFavoriteStore';
+import { useFavoriteStore } from '@/entities/favorite/model/useFavoriteStore';
 import { useState } from 'react';
 
-interface FavoriteButtonProps {
+interface WeatherFavoriteButtonProps {
   location: string;
 }
 
-export function FavoriteButton({ location }: FavoriteButtonProps) {
+export function WeatherFavoriteButton({
+  location,
+}: WeatherFavoriteButtonProps) {
   const { favorites, addFavorite, removeFavorite } = useFavoriteStore();
   const isFavorite = favorites.some((f) => f.name === location);
   const [message, setMessage] = useState('');

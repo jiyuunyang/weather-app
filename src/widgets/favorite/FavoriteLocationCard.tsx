@@ -1,5 +1,5 @@
-import type { Favorite } from '../../entities/favorite/model/types';
-import { WeatherEmoji } from '@/entities/weather/ui/WeatherEmoji';
+import type { Favorite } from '@/entities/favorite/model/types';
+import { WeatherEmoji } from '@/shared/ui/WeatherEmoji';
 import { formatValue } from '@/shared/lib/utils/formatValue';
 import { EditNicknameButton } from './EditNicknameButton';
 import { DeleteFavoriteButton } from './DeleteFavoriteButton';
