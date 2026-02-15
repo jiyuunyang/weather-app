@@ -40,17 +40,20 @@ export default function FavoriteLocationCard({
     return <ErrorMessage message='날씨 정보를 불러오는 데 실패했습니다.' />;
   }
 
+  const handleClick = () => {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+    setSelectedLocation({
+      name: favorite.name,
+      lat: favorite.lat,
+      lon: favorite.lon,
+      x: favorite.x,
+      y: favorite.y,
+    });
+  };
+
   return (
     <div
-      onClick={() =>
-        setSelectedLocation({
-          name: favorite.name,
-          lat: favorite.lat,
-          lon: favorite.lon,
-          x: favorite.x,
-          y: favorite.y,
-        })
-      }
+      onClick={handleClick}
       className='bg-card-background rounded-2xl p-5 cursor-pointer
       dark:bg-card-background-dark
       hover:shadow-lg
