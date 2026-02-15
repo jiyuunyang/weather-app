@@ -8,6 +8,7 @@ import { useLocationStore } from '@/entities/location/model/locationStore';
 import WarningMessage from '@/shared/ui/WarningMessage';
 import type { Favorite } from '@/entities/favorite/model/types';
 import { useFavoriteStore } from '@/entities/favorite/model/useFavoriteStore';
+import NoFavoriteLocationCard from '@/entities/favorite/ui/NoFavoriteLocationCard';
 
 export default function Home() {
   useCurrentLocation();
@@ -26,7 +27,7 @@ export default function Home() {
           />
         ) : (
           <WarningMessage
-            message={`위치를 불러오는 중입니다.\n위치 권한을 허용했는지 확인해주세요.`}
+            message={`📍위치를 불러오는 중입니다.\n위치 권한을 허용했는지 확인해주세요.`}
           />
         )}
         <section>
@@ -37,11 +38,7 @@ export default function Home() {
                 <FavoriteLocationCard key={favorite.name} favorite={favorite} />
               ))
             ) : (
-              <p>
-                즐겨찾는 지역이 없습니다.
-                <br />
-                위치를 검색하여 즐겨찾기에 추가해보세요!
-              </p>
+              <NoFavoriteLocationCard />
             )}
           </div>
         </section>

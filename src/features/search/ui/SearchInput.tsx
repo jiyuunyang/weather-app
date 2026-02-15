@@ -33,7 +33,7 @@ export default function SearchInput() {
       </button>
 
       {/* PC 검색창 */}
-      <div className='hidden md:block relative w-full max-w-lg'>
+      <div className='hidden md:block relative w-full max-w-lg mx-3'>
         <FiSearch className='absolute left-3 top-1/2 -translate-y-1/2 text-gray-400 dark:text-gray-500' />
         <input
           type='text'
