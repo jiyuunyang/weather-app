@@ -7,7 +7,8 @@ export function useUltraShortNowcast(nx: number, ny: number) {
   const { base_date, now_time } = getBaseDateTime();
 
   return useQuery({
-    queryKey: ['weather', 'ultraNowcast', nx, ny, base_date, now_time],
+    queryKey: ['weather', 'ultraNowcast', nx, ny],
+    enabled: nx > 0 && ny > 0,
     queryFn: () =>
       fetchUltraShortNowcast({
         nx,
@@ -15,7 +16,7 @@ export function useUltraShortNowcast(nx: number, ny: number) {
         base_date,
         now_time,
       }),
-    staleTime: 1000 * 60 * 2, // 2분 - 실황은 최신 데이터 중요
+    staleTime: 1000 * 60 * 10, // 10분
     select: (data) => {
       const items = data?.response?.body?.items?.item;
       if (!Array.isArray(items)) return {};

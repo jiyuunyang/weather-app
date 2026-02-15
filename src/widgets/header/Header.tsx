@@ -1,6 +1,6 @@
-import CurrentLocationButton from '@/features/get-location/ui/CurrentLocationButton';
-import SearchInput from '@/features/search/ui/SearchInput';
-import ThemeToggle from '@/features/theme-toggle/ui/ThemeToggle';
+import CurrentLocationButton from '@/widgets/header/CurrentLocationButton';
+import SearchInput from '@/widgets/header/SearchInput';
+import ThemeToggle from '@/widgets/header/ThemeToggle';
 
 export function Header() {
   return (

@@ -1,4 +1,3 @@
-// entities/location/model/locationStore.ts
 import { create } from 'zustand';
 import type { Location } from './types';
 

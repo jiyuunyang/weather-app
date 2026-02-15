@@ -1,6 +1,18 @@
 import fs from 'fs';
 import xlsx from 'xlsx';
 
+/* 
+shared/data의 xy_district.xlsx 파일은
+기상청 단기예보 조회 오픈 API 활용 가이드 속 파일로
+해당 파일을 각 위치별 
+name(지역이름), 
+lat(위도), 
+lon(경도), 
+x(격자 X), 
+y(격자 Y) 
+속성을 가진 json 배열 파일로 변환시킴
+*/
+
 interface LocationRow {
   '1단계'?: string;
   '2단계'?: string;

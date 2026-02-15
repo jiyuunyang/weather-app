@@ -5,8 +5,10 @@ import { parseShortTermForecast } from '../lib/parseShortTermForecast';
 
 export function useShortTermForecast(nx: number, ny: number) {
   const { base_date, base_time } = getBaseDateTime();
+
   return useQuery({
-    queryKey: ['weather', 'shortForecast', nx, ny, base_date, base_time],
+    queryKey: ['weather', 'shortForecast', nx, ny],
+    enabled: nx > 0 && ny > 0,
     queryFn: () =>
       fetchShortTermForecast({
         nx,

@@ -1,8 +1,7 @@
 import { useState } from 'react';
 import koreaLocationsXY from '@/entities/location/data/korea_districts_with_xy.json';
 import { useLocationStore } from '@/entities/location/model/locationStore';
-
-const normalize = (str: string) => str.trim().replace(/\s+/g, ' ');
+import { normalizeString } from '@/shared/lib/utils/normalizeString';
 
 export function useSearchLocation() {
   const [query, setQuery] = useState('');
@@ -23,7 +22,9 @@ export function useSearchLocation() {
     const filtered = koreaLocationsXY
       .map((d) => d.name.replaceAll('-', ' '))
       .filter((name) =>
-        normalize(name).toLowerCase().includes(normalize(value).toLowerCase()),
+        normalizeString(name)
+          .toLowerCase()
+          .includes(normalizeString(value).toLowerCase()),
       );
 
     setFilteredLocations(filtered);
@@ -32,7 +33,8 @@ export function useSearchLocation() {
 
   const handleSelect = (loc: string) => {
     const matched = koreaLocationsXY.find(
-      (d) => normalize(d.name.replaceAll('-', ' ')) === normalize(loc),
+      (d) =>
+        normalizeString(d.name.replaceAll('-', ' ')) === normalizeString(loc),
     );
     if (matched) {
       setSelectedLocation(matched);

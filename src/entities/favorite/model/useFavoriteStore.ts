@@ -2,7 +2,7 @@ import { create } from 'zustand';
 import { persist } from 'zustand/middleware';
 import type { Favorite } from './types';
 import koreaLocationsXY from '@/entities/location/data/korea_districts_with_xy.json';
-import { normalize } from '@/shared/lib/utils/normalize';
+import { normalizeString } from '@/shared/lib/utils/normalizeString';
 
 interface FavoriteState {
   favorites: Favorite[];
@@ -24,7 +24,9 @@ export const useFavoriteStore = create<FavoriteState>()(
           };
         }
         const locationInfo = koreaLocationsXY.find(
-          (d) => normalize(d.name.replaceAll('-', ' ')) === normalize(name),
+          (d) =>
+            normalizeString(d.name.replaceAll('-', ' ')) ===
+            normalizeString(name),
         );
         if (!locationInfo) {
           return { success: false, message: '해당 위치를 추가할 수 없습니다' };

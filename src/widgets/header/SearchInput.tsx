@@ -1,5 +1,5 @@
+import { useSearchLocation } from '@/features/search/model/useSearchLocation';
 import { FiSearch } from 'react-icons/fi';
-import { useSearchLocation } from '../model/useSearchLocation';
 
 export default function SearchInput() {
   const {

@@ -1,10 +1,5 @@
 import { SKY_EMOJI_MAP, PTY_EMOJI_MAP } from './emojiMaps';
-import type { SkyCode, PtyCode } from '../model/types';
-
-export interface WeatherSymbol {
-  emoji: string;
-  desc: string;
-}
+import type { SkyCode, PtyCode, WeatherSymbol } from '../model/types';
 
 export function getWeatherEmoji(
   ptyCode?: number,

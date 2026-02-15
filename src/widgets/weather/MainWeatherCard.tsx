@@ -1,7 +1,7 @@
-import { formatValue } from '../lib/formatValue';
-import type { ForecastByTime } from '../model/types';
-import { WeatherEmoji } from './WeatherEmoji';
-import { FavoriteButton } from '@/entities/favorite/ui/FavoriteButton';
+import { formatValue } from '../../shared/lib/utils/formatValue';
+import type { ForecastByTime } from '../../entities/weather/model/types';
+import { WeatherEmoji } from '../../entities/weather/ui/WeatherEmoji';
+import { FavoriteButton } from '@/widgets/weather/FavoriteButton';
 
 interface MainWeatherCardProps {
   currentLocation: string;

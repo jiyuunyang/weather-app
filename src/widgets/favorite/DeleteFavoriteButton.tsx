@@ -1,29 +1,26 @@
 import { useState } from 'react';
-import { PiPencilSimple } from 'react-icons/pi';
-import { useFavoriteStore } from '../model/useFavoriteStore';
+import { PiTrash } from 'react-icons/pi';
+import { useFavoriteStore } from '../../entities/favorite/model/useFavoriteStore';
 
-interface EditNicknameButtonProps {
+interface DeleteFavoriteButtonProps {
   location: string;
 }
 
-export function EditNicknameButton({ location }: EditNicknameButtonProps) {
-  const { editFavorite } = useFavoriteStore();
+export function DeleteFavoriteButton({ location }: DeleteFavoriteButtonProps) {
+  const { removeFavorite } = useFavoriteStore();
   const [isOpen, setIsOpen] = useState(false);
-  const [nickname, setNickname] = useState('');
 
   const openModal = (e: React.MouseEvent) => {
-    e.stopPropagation(); // 상위 클릭 이벤트(자동 스크롤) 방지
-    setNickname(''); // 초기화
+    e.stopPropagation();
     setIsOpen(true);
   };
+
   const closeModal = () => {
     setIsOpen(false);
   };
 
-  const saveNickname = () => {
-    if (nickname.trim()) {
-      editFavorite(location, nickname.trim());
-    }
+  const deleteFavoriteLocation = () => {
+    removeFavorite(location);
     setIsOpen(false);
   };
 
@@ -33,13 +30,13 @@ export function EditNicknameButton({ location }: EditNicknameButtonProps) {
         onClick={(e) => openModal(e)}
         className='relative inline-block group text-xl cursor-pointer'
       >
-        <PiPencilSimple />
+        <PiTrash />
         <div
           className='absolute bottom-full left-1/2 transform -translate-x-1/2 
                     w-max max-w-xs bg-black text-white text-sm rounded-md px-1 py-0.5 -mt-1
                     opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none z-10'
         >
-          별명수정
+          삭제하기
         </div>
       </button>
 
@@ -50,16 +47,7 @@ export function EditNicknameButton({ location }: EditNicknameButtonProps) {
           className='fixed inset-0 bg-black/50 z-50 flex items-center justify-center p-8'
         >
           <div className='bg-card-background dark:bg-card-background-dark rounded-2xl p-5 w-80'>
-            <h3 className='text-lg font-semibold mb-3'>별명 수정</h3>
-            <input
-              type='text'
-              value={nickname}
-              onChange={(e) => setNickname(e.target.value)}
-              placeholder='새 별명을 입력하세요'
-              className='w-full px-3 py-2 rounded-xl bg-card-highlight dark:bg-card-background-dark 
-              placeholder-gray-400
-              focus:outline-none focus:ring-1 focus:ring-green-500'
-            />
+            <h3 className='text-lg font-semibold mb-3'>정말 지우시겠습니까?</h3>
             <div className='mt-4 flex justify-end gap-2'>
               <button
                 onClick={closeModal}
@@ -68,10 +56,10 @@ export function EditNicknameButton({ location }: EditNicknameButtonProps) {
                 취소
               </button>
               <button
-                onClick={saveNickname}
-                className='px-3 py-1 rounded-md bg-green-500 text-white cursor-pointer'
+                onClick={deleteFavoriteLocation}
+                className='px-3 py-1 rounded-md bg-red-500 text-white cursor-pointer'
               >
-                저장
+                삭제
               </button>
             </div>
           </div>

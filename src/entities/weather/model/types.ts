@@ -1,11 +1,21 @@
 export type SkyCode = 1 | 3 | 4;
 export type PtyCode = 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7;
-
+export interface XY {
+  x: number;
+  y: number;
+}
+export interface LatLon {
+  lat: number;
+  lon: number;
+}
 export interface ForecastByTime {
   fcstTime: string; // "1200", "1300" ...
   data: Record<string, string>; // { TMP: "4", SKY: "3", PTY: "0" … }
 }
-
+export interface WeatherSymbol {
+  emoji: string;
+  desc: string;
+}
 export interface UltraShortNowcastResponse {
   response: {
     header: {

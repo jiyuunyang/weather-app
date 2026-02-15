@@ -1,5 +1,5 @@
+import { useCurrentLocation } from '@/features/get-location/model/useCurrentLocation';
 import { MdOutlineLocationSearching } from 'react-icons/md';
-import { useCurrentLocation } from '../model/useCurrentLocation';
 
 export default function CurrentLocationButton() {
   const { updateCurrentLocation } = useCurrentLocation();

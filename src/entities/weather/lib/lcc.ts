@@ -1,12 +1,4 @@
-export interface XY {
-  x: number;
-  y: number;
-}
-
-export interface LatLon {
-  lat: number;
-  lon: number;
-}
+import type { LatLon, XY } from '../model/types';
 
 const KMA = {
   RE: 6371.00877, // Earth radius (km)

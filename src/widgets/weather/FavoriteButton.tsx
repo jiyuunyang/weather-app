@@ -1,5 +1,5 @@
 import { MdFavorite, MdFavoriteBorder } from 'react-icons/md';
-import { useFavoriteStore } from '../model/useFavoriteStore';
+import { useFavoriteStore } from '../../entities/favorite/model/useFavoriteStore';
 import { useState } from 'react';
 
 interface FavoriteButtonProps {
