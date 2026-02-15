@@ -1,10 +1,10 @@
 import { useQuery } from '@tanstack/react-query';
 import { fetchUltraShortNowcast } from '../api/weatherApi';
-import { getBaseDateTime } from '../lib/getBaseDateTime';
 import { parseUltraShortNowcast } from '../lib/parseUltraShortNowcast';
+import { getUltraShortNowcastDateTime } from '../lib/getUltraShortNowcastDateTime';
 
 export function useUltraShortNowcast(nx: number, ny: number) {
-  const { base_date, now_time } = getBaseDateTime();
+  const { base_date, base_time } = getUltraShortNowcastDateTime();
 
   return useQuery({
     queryKey: ['weather', 'ultraNowcast', nx, ny],
@@ -14,7 +14,7 @@ export function useUltraShortNowcast(nx: number, ny: number) {
         nx,
         ny,
         base_date,
-        now_time,
+        base_time,
       }),
     staleTime: 1000 * 60 * 10, // 10분
     select: (data) => {

@@ -11,14 +11,14 @@ export async function fetchUltraShortNowcast({
   nx,
   ny,
   base_date,
-  now_time,
+  base_time,
 }: {
   nx: number;
   ny: number;
   base_date: string;
-  now_time: string;
+  base_time: string;
 }): Promise<UltraShortNowcastResponse> {
-  const url = `${API_URL}/getUltraSrtNcst?serviceKey=${API_KEY}&dataType=JSON&nx=${nx}&ny=${ny}&base_date=${base_date}&base_time=${now_time}`;
+  const url = `${API_URL}/getUltraSrtNcst?serviceKey=${API_KEY}&dataType=JSON&nx=${nx}&ny=${ny}&base_date=${base_date}&base_time=${base_time}`;
 
   const res = await fetch(url);
   if (!res.ok) {

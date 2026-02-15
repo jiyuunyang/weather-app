@@ -1,10 +1,10 @@
 import { useQuery } from '@tanstack/react-query';
 import { fetchShortTermForecast } from '../api/weatherApi';
-import { getBaseDateTime } from '../lib/getBaseDateTime';
 import { parseShortTermForecast } from '../lib/parseShortTermForecast';
+import { getSafeShortTermForecastDateTime } from '../lib/getShortTermForecastDateTime';
 
 export function useShortTermForecast(nx: number, ny: number) {
-  const { base_date, base_time } = getBaseDateTime();
+  const { base_date, base_time } = getSafeShortTermForecastDateTime();
 
   return useQuery({
     queryKey: ['weather', 'shortForecast', nx, ny],
